@@ -19,7 +19,6 @@ public class 最长连续序列_ACM {
             int result = longestConsecutive(nums);
             System.out.println(result);
         }
-
         // 6 100 4 200 1 3 2 -> 4
     }
 
