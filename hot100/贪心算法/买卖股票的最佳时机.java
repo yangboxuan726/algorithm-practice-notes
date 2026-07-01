@@ -2,7 +2,7 @@ public class 买卖股票的最佳时机 {
     //https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description/?envType=study-plan-v2&envId=top-100-liked
 
     public static void main(String[] args) {
-        int[] nums = {7,1,5,3,6,4};
+        int[] nums = {7,1,5,3,6,4}; //5
         int result = maxProfit(nums);
         System.out.println(result);
 
