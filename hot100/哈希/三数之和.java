@@ -4,14 +4,19 @@ import java.util.List;
 
 public class 三数之和 {
     public static void main(String[] args) {
+        //https://leetcode.cn/problems/3sum/description/?envType=study-plan-v2&envId=top-100-liked
+        int[] nums = {-1,0,1,2,-1,-4};//[[-1,-1,2],[-1,0,1]]
+        List<List<Integer>> lists = threeSum(nums);
+        System.out.println(lists);
+
 
     }
-    public List<List<Integer>> threeSum(int[] nums){
+    public static  List<List<Integer>> threeSum(int[] nums){
         Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
         int n = nums.length;
         for (int i = 0; i <n-2 ;i++){
-            if(i > 0 && i == nums[i-1]) continue;
+            if(i > 0 && nums[i] == nums[i-1]) continue;
             if (nums[i] + nums[i+1] + nums[i+2] >0) break;
             if(nums[i] + nums[n-2] + nums[n-1] < 0) continue;
             int j = i + 1;
