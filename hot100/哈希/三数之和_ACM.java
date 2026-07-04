@@ -19,7 +19,6 @@ public class 三数之和_ACM {
             List<List<Integer>> lists = threeSum(nums);
             System.out.println(lists);
             //test : 6 -1 0 1 2 -1 4 ->[[-1,-1,2],[-1,0,1]]
-
         }
 
 
