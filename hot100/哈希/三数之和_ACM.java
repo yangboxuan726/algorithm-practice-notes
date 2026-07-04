@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class 三数之和_ACM {
+    public static void main(String[] args) {
+        //https://leetcode.cn/problems/3sum/description/?envType=study-plan-v2&envId=top-100-liked
+        //int[] nums = {-1,0,1,2,-1,-4};//[[-1,-1,2],[-1,0,1]]
+        //List<List<Integer>> lists = threeSum(nums);
+        //System.out.println(lists);
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNextInt()){
+            int m = sc.nextInt();
+            int[] nums = new int[m];
+            for (int i = 0; i < m;i++){
+                nums[i] = sc.nextInt();
+            }
+            List<List<Integer>> lists = threeSum(nums);
+            System.out.println(lists);
+            //test : 6 -1 0 1 2 -1 4 ->[[-1,-1,2],[-1,0,1]]
+
+        }
+
+
+    }
+    public static  List<List<Integer>> threeSum(int[] nums){
+        Arrays.sort(nums);
+        List<List<Integer>> ans = new ArrayList<>();
+        int n = nums.length;
+        for (int i = 0; i <n-2 ;i++){
+            if(i > 0 && nums[i] == nums[i-1]) continue;
+            if (nums[i] + nums[i+1] + nums[i+2] >0) break;
+            if(nums[i] + nums[n-2] + nums[n-1] < 0) continue;
+            int j = i + 1;
+            int k = n - 1;
+            while (j < k){
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum < 0){
+                    j++;
+                }else if(sum > 0){
+                    k--;
+                }else {
+                    ans.add(List.of(nums[i],nums[j],nums[k]));
+                    for (j++; j < k && nums[j] == nums[j - 1]; j++); // 跳过重复数字
+                    for (k--; k > j && nums[k] == nums[k + 1]; k--); // 跳过重复数字
+
+
+                }
+            }
+
+
+        }
+        return ans;
+    }
+}
