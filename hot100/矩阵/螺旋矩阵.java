@@ -2,28 +2,57 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class 螺旋矩阵 {
-    private static final int[][] DIRS = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 右下左上
-
-    public List<Integer> spiralOrder(int[][] matrix) {
-        int m = matrix.length;
-        int n = matrix[0].length;
-        List<Integer> ans = new ArrayList<>(m * n); // 预分配空间
-        int i = 0;
-        int j = 0;
-        int di = 0;
-        for (int k = 0; k < m * n; k++) { // 一共走 mn 步
-            ans.add(matrix[i][j]);
-            matrix[i][j] = Integer.MAX_VALUE; // 标记，表示已经访问过（已经加入答案）
-            int x = i + DIRS[di][0];
-            int y = j + DIRS[di][1]; // 下一步的位置
-            // 如果 (x, y) 出界或者已经访问过
-            if (x < 0 || x >= m || y < 0 || y >= n || matrix[x][y] == Integer.MAX_VALUE) {
-                di = (di + 1) % 4; // 右转 90°
-            }
-            i += DIRS[di][0];
-            j += DIRS[di][1]; // 走一步
-        }
-        return ans;
+    //https://leetcode.cn/problems/spiral-matrix/description/?envType=study-plan-v2&envId=top-100-liked
+    public static void main(String[] args) {
+        //输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+        //输出：[1,2,3,6,9,8,7,4,5]
+        int[][] nums = {{1,2,3},{4,5,6},{7,8,9}};
+        List<Integer> result = spiralOrder(nums);
+        System.out.println(result);
     }
 
+    public static List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> ans = new ArrayList<>();
+
+        int top = 0;
+        int bottom = matrix.length - 1;
+        int left = 0;
+        int right = matrix[0].length - 1;
+
+        while (top <= bottom && left <= right) {
+            // 1. 上边：左 -> 右
+            for (int i = left; i <= right; i++) {
+                ans.add(matrix[top][i]);
+            }
+            top++;
+
+            // 2. 右边：上 -> 下
+            for (int i = top; i <= bottom; i++) {
+                ans.add(matrix[i][right]);
+            }
+            right--;
+
+            // 3. 下边：右 -> 左
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    ans.add(matrix[bottom][i]);
+                }
+                bottom--;
+            }
+
+            // 4. 左边：下 -> 上
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    ans.add(matrix[i][left]);
+                }
+                left++;
+            }
+
+        }
+        return ans;
+
+    }
 }
+
+
+
