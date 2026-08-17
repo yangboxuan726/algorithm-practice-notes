@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class 矩阵置零_ACM {
+    //https://leetcode.cn/problems/set-matrix-zeroes/description/?envType=study-plan-v2&envId=top-100-liked
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
