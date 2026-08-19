@@ -1,9 +1,9 @@
 public class 两数相加 {
     //https://leetcode.cn/problems/add-two-numbers/description/?envType=study-plan-v2&envId=top-100-liked
-    static class ListNode{
+    public static class ListNode{
         int val;
         ListNode next;
-        ListNode(){};
+        ListNode(){}
         ListNode(int val){
             this.val = val;
         }
